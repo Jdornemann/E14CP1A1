@@ -19,12 +19,17 @@ class ProductsController < ApplicationController
     end
 
     def destroy
+      
+      @product = Product.find(params[:id])
+      if @product.present?
         @product.destroy
+      end
+     
         respond_to do |format|
-          format.html { redirect_to categories_url, notice: 'Category was successfully destroyed.' }
+          format.html { redirect_to @product.category, notice: 'product was successfully destroyed.' }
           format.json { head :no_content }
         end
-      end
+    end
 
 
     def product_params

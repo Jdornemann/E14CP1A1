@@ -5,12 +5,15 @@
   <%= @category.name %>
 </p>
 
-
+<ul>
 <% @category.product.each do |product| %>
-<%=  product.name  %>
+
+<li> <%=  product.name  %> 
+<%= link_to "x", category_product_path(@category, product), method: :delete %></li>
+
 
 <% end %>
-
+</ul>
 
 
 <%= form_with(model: [ @category, @product ],local: true) do |form| %>
